@@ -11,34 +11,58 @@
 
 <body>
   <%-include ('navbar')%>
-    <table>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Published by</th>
-        <th>Year</th>
-        <th>ISBN</th>
-      </tr>
-      <% books.forEach((b)=>{ %>
-        <tr class="bookRow">
-          <td>
-            <%=b.title%>
-          </td>
-          <td>
-            <%=b.author_id %>
-          </td>
-          <td>
-            <%=b.publisher_id %>
-          </td>
-          <td>
-            <%=b.year ?? '' %>
-          </td>
-          <td>
-            <%=b.isbn ?? '' %>
-          </td>
-        </tr>
-        <% }) %>
-    </table>
+    <header class="index-header">
+      <h1> Library Inventory</h1>
+      <div class="index-utilities">
+        <div class="book-counter">
+          <p>Book count:</p>
+          <p>
+            <%=books.length%>
+          </p>
+        </div>
+        <form method="get">
+          <label for="sortby">Sort by</label>
+          <select name="sortby" id="sortby" onchange="this.form.submit()">
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+            <option value="year">Year</option>
+            <option value="publisher">Publisher</option>
+          </select>
+        </form>
+      </div>
+    </header>
+    <div class="book-list">
+      <div class="books-container">
+        <div class="list-header">
+          <h2>Title</h2>
+          <h2>Author</h2>
+          <h2>Published by</h2>
+          <h2>Year</h2>
+          <h2>ISBN</h2>
+        </div>
+
+        <% books.forEach((b)=>{ %>
+          <div class="book-item">
+            <p>
+              <%=b.title%>
+            </p>
+            <p>
+              <%=b.author_id %>
+            </p>
+            <p>
+              <%=b.publisher_id %>
+            </p>
+            <p>
+              <%=b.year ?? '' %>
+            </p>
+            <p>
+              <%=b.isbn ?? '' %>
+            </p>
+          </div>
+          <% }) %>
+
+      </div>
+    </div>
 </body>
 
 </html>
