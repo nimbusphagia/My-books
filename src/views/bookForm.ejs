@@ -1,0 +1,46 @@
+<form class='book-form modal inactive' method="post">
+  <h2>Add a new book</h2>
+  <div class="form-item">
+    <label for="title"> Title</label>
+    <input type="text" id="title" name="title" required>
+  </div>
+
+  <div class="form-item">
+    <label for="author">Author</label>
+    <select id="author" name="author" required>
+      <option value="">-- Select an author --</option>
+      <% authors.forEach((a)=>{ %>
+        <option value=<%=a.id%>> <%=a.first_name%>
+            <%=a.last_name%>
+        </option>
+        <%}) %>
+    </select>
+  </div>
+
+  <div class="form-item">
+    <label for="publisher">Publisher</label>
+    <select id="publisher" name="publisher" required>
+      <option value="">-- Select a publisher --</option>
+      <option value="penguin">Penguin Random House</option>
+    </select>
+  </div>
+
+  <div class="form-item">
+    <label for="year">Year</label>
+    <input type="number" id="year" name="year" min="0" max="9999">
+  </div>
+
+  <div class="form-item">
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="4"></textarea>
+  </div>
+
+  <div class="form-item">
+    <label for="isbn">ISBN</label>
+    <input type="text" id="isbn" name="isbn" placeholder="978-3-16-148410-0">
+  </div>
+  <div class="buttons">
+    <button type="button" class="return-btn">return</button>
+    <button type="submit" class="add-btn">add</button>
+  </div>
+</form>

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/bookForm.css">
   <title>Library Inventory</title>
 </head>
 
@@ -63,6 +64,30 @@
 
       </div>
     </div>
+    <%-include('veil')%>
+      <%-include('bookForm',{authors})%>
+        <script>
+          const navBtn = document.querySelector('.toggle-active');
+          const formBtn = document.querySelector('.return-btn');
+          function enableToggle(btn) {
+            if (!btn) return;
+            btn.addEventListener('click', () => {
+              const elements = document.querySelectorAll('.inactive, .active');
+
+              elements.forEach(el => {
+                if (el.classList.contains('inactive')) {
+                  el.classList.replace('inactive', 'active');
+                } else {
+                  el.classList.replace('active', 'inactive');
+                }
+              });
+            });
+          }
+
+          enableToggle(formBtn);
+          enableToggle(navBtn);
+        </script>
+
 </body>
 
 </html>

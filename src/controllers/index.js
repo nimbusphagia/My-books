@@ -2,7 +2,7 @@ import { poolQuery } from "../database/index.js";
 
 async function indexGet(req, res) {
   // Get all books
-  const sql = `
+  const bookSql = `
     SELECT 
       b.title,
       a.first_name || ' ' || a.last_name as author,
@@ -16,15 +16,23 @@ async function indexGet(req, res) {
     JOIN publisher p 
     ON p.id = b.publisher_id
   `;
+  const authorSql = `SELECT * from author`;
+  const publisherSql = `SELECT * from publisher`;
   try {
-    const result = await poolQuery(sql);
-    const books = result.rows;
-    res.render('index', {
-      books: books,
-    })
+    const [booksRes, authorsRes, publishersRes] = await Promise.all([
+      poolQuery(bookSql),
+      poolQuery(authorSql),
+      poolQuery(publisherSql)
+    ]);
 
+    res.render('index', {
+      books: booksRes.rows,
+      authors: authorsRes.rows,
+      publishers: publishersRes.rows
+    });
   } catch (err) {
-    console.log(err);
+    console.error(err);
+    res.status(500).send('Server error');
   }
 }
 
