@@ -1,0 +1,49 @@
+<form class='book-form modal inactive' method="POST" autocomplete="off">
+  <h2>Edit</h2>
+  <input type="hidden" name="id" value="<%=book.id%>">
+  <div class="form-item">
+    <label for="title"> Title</label>
+    <input type="text" id="title" name="title" value='<%=book.title %>' required>
+  </div>
+
+  <select id="author" name="author_id" required>
+    <option value="">-- Select an author --</option>
+    <% authors.forEach((a)=> { %>
+      <option value="<%= a.id %>" <%=a.id==book.author_id ? "selected" : "" %> >
+        <%= a.first_name %>
+          <%= a.last_name %>
+      </option>
+      <% }) %>
+  </select>
+
+  <select id="publisher" name="publisher_id" required>
+    <option value="">-- Select a publisher --</option>
+    <% publishers.forEach((p)=> { %>
+      <option value="<%= p.id %>" <%=p.id==book.publisher_id ? "selected" : "" %>
+        >
+        <%= p.publisher_name %>
+      </option>
+      <% }) %>
+  </select>
+
+  <div class="form-item">
+    <label for="year">Year</label>
+    <input type="number" id="year" name="year" min="0" max="9999" value='<%=book.year %>'>
+  </div>
+
+  <div class="form-item">
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="4">
+      <%=book.description%>
+    </textarea>
+  </div>
+
+  <div class="form-item">
+    <label for="isbn">ISBN</label>
+    <input type="text" id="isbn" name="isbn" placeholder="978-3-16-148410-0" value='<%=book.isbn%>'>
+  </div>
+  <div class="buttons">
+    <button type="button" class="return-btn">return</button>
+    <button type="button" class="commit-btn">Commit </button>
+  </div>
+</form>

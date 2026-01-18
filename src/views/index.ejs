@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="css/bookForm.css">
-  <link rel="stylesheet" href="css/passwordPrompt.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/bookForm.css">
+  <link rel="stylesheet" href="/css/deletePrompt.css">
   <title>Library Inventory</title>
 </head>
 
@@ -45,9 +45,9 @@
 
         <% books.forEach((b)=>{ %>
           <div class="book-item">
-            <p>
+            <a href="/book/<%=b.id%>">
               <%=b.title%>
-            </p>
+            </a>
             <p>
               <%=b.author %>
             </p>
@@ -70,8 +70,8 @@
       </div>
     </div>
     <%-include('veil')%>
-      <%-include('passwordPrompt' )%>
-        <%-include('bookForm',{authors})%>
+      <%-include('deletePrompt' )%>
+        <%-include('bookForm')%>
           <script src="/js/indexUtilities.js"></script>
 
 </body>

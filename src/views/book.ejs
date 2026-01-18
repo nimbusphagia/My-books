@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/bookForm.css">
+  <link rel="stylesheet" href="/css/passwordPrompt.css">
+  <link rel="stylesheet" href="/css/book.css">
+  <title>
+    <%=book.title %>
+  </title>
+</head>
+
+<body>
+  <%-include ('navbar')%>
+    <div class="book-wrapper">
+      <div class="book-body">
+        <div class="img-wrapper">
+          <img src="<%=book.img_url%>" alt="Book cover">
+        </div>
+        <div class="book-main">
+          <header class="book-header">
+            <h1>
+              <%=book.title %>
+            </h1>
+            <button class="edit-book-btn" type="button">
+              <img src="/icons/edit.png" alt="click to edit">
+            </button>
+          </header>
+          <div class="book-description">
+            <p>
+              <%=book.description%>
+            </p>
+          </div>
+          <div class="book-details">
+            <div class="book-utility">
+              <p class="label">Author</p>
+              <p>
+                <%= book.author%>
+              </p>
+            </div>
+            <div class="book-utility">
+              <p class="label">Published by</p>
+              <p>
+                <%= book.publisher%>
+              </p>
+            </div>
+            <div class="book-utility">
+              <p class="label">Year of publication</p>
+              <p>
+                <%= book.year%>
+              </p>
+            </div>
+            <div class="book-utility">
+              <p class="label">ISBN</p>
+              <p>
+                <%= book.isbn%>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%-include('veil')%>
+      <%-include('editBook')%>
+        <%-include('passwordPrompt' )%>
+          <script src="/js/bookUtilities.js"></script>
+
+</body>
+
+</html>

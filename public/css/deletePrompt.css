@@ -1,4 +1,4 @@
-.validator {
+.form-delete {
   flex-direction: column;
   width: 300px;
   gap: 20px;
@@ -8,31 +8,31 @@
   transform: scale(-);
 }
 
-.validator h2 {
+.form-delete h2 {
   text-align: center;
 }
 
-.validator .form-item {
+.form-delete .form-item {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.validator .form-item label {
+.form-delete .form-item label {
   font-weight: 500;
 }
 
-.validator .form-item input {
+.form-delete .form-item input {
   flex-grow: 1;
 }
 
-.validator .validator-buttons {
+.form-delete .delete-buttons {
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
 }
 
-.validator button {
+.form-delete button {
   padding: 10px 20px;
   color: white;
   font-weight: 550;
@@ -40,19 +40,19 @@
   border-radius: 5px;
 }
 
-.validator .submit-btn {
+.form-delete .submit-delete-btn {
   background-color: red;
 }
 
-.validator .cancel-btn {
+.form-delete .cancel-delete-btn {
   background-color: grey;
 }
 
-.validator {
+.form-delete {
   position: absolute;
   background-color: white;
-  z-index: 2001;
+  z-index: 1001;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 50%);
 }

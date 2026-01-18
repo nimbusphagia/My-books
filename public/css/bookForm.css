@@ -42,6 +42,7 @@
   border-radius: 5px;
 }
 
+.commit-btn,
 .add-btn {
   background-color: black;
 }
@@ -59,7 +60,8 @@
   transform: translate(-50%, 10%);
 }
 
-.veil {
+.veil,
+.password-veil {
   position: fixed;
   top: 0;
   left: 0;

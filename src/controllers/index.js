@@ -1,36 +1,19 @@
-import { poolQuery, createBook, deleteBook, validateAccess } from "../database/index.js";
+import { createBook, deleteBook, validateAccess, getAuthors, getPublishers, getBooks } from "../database/index.js";
 
 async function indexGet(req, res) {
   const { deleted } = req.query;
   // Get all books
-  const bookSql = `
-    SELECT 
-      b.id,
-      b.title,
-      a.first_name || ' ' || a.last_name as author,
-      p.publisher_name as publisher,
-      b.year,
-      b.description,
-      b.isbn
-    FROM book b
-    JOIN author a 
-    ON b.author_id = a.id 
-    JOIN publisher p 
-    ON p.id = b.publisher_id
-  `;
-  const authorSql = `SELECT * from author`;
-  const publisherSql = `SELECT * from publisher`;
   try {
-    const [booksRes, authorsRes, publishersRes] = await Promise.all([
-      poolQuery(bookSql),
-      poolQuery(authorSql),
-      poolQuery(publisherSql)
+    const [books, authors, publishers] = await Promise.all([
+      getBooks(),
+      getAuthors(),
+      getPublishers()
     ]);
 
     res.render('index', {
-      books: booksRes.rows,
-      authors: authorsRes.rows,
-      publishers: publishersRes.rows,
+      books: books,
+      authors: authors,
+      publishers: publishers,
       deleted: deleted,
     });
   } catch (err) {
@@ -79,5 +62,6 @@ async function indexPost(req, res) {
     return res.status(500).send("Server error");
   }
 }
+
 
 export { indexGet, indexPost };

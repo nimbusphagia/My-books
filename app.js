@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 //Routers
 import { indexRouter } from './src/routes/index.js';
+import { bookRouter } from './src/routes/book.js';
 
 const app = express();
 const port = process.env.PORT;
@@ -19,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Middleware
 
 app.use(indexRouter);
-
+app.use(bookRouter);
 //Listen
 app.listen(port, (err) => {
   if (err) {
