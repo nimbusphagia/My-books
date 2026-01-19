@@ -1,7 +1,8 @@
 import { deleteAuthor, getAuthors, poolQuery, updateAuthor, validateAccess } from "../database/index.js"
 
 async function authorsGet(req, res) {
-  const authors = await getAuthors();
+  const { sortby } = req.query;
+  const authors = await getAuthors(sortby ?? 'first');
   res.render('authors', { authors: authors });
 }
 async function authorsPost(req, res) {

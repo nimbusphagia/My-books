@@ -1,15 +1,14 @@
 import { createBook, deleteBook, validateAccess, getAuthors, getPublishers, getBooks } from "../database/index.js";
 
 async function indexGet(req, res) {
-  const { deleted } = req.query;
+  const { deleted, sortby } = req.query;
   // Get all books
   try {
     const [books, authors, publishers] = await Promise.all([
-      getBooks(),
+      getBooks(sortby ?? 'title'),
       getAuthors(),
       getPublishers()
     ]);
-
     res.render('index', {
       books: books,
       authors: authors,

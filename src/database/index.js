@@ -56,16 +56,41 @@ async function getBookById(id) {
   const result = await poolQuery(sql, [id]);
   return result.rows[0];
 }
-async function getBooks() {
-  const result = await poolQuery(bookJoinSql);
+async function getBooks(orderBy = 'title') {
+  const orderMap = {
+    title: 'b.title',
+    author: "a.first_name || ' ' || a.last_name",
+    year: 'b.year',
+    publisher: 'p.publisher_name',
+  };
+
+  const orderColumn = orderMap[orderBy] || orderMap.title;
+
+  const sql = `
+    ${bookJoinSql}
+    ORDER BY ${orderColumn} ASC NULLS LAST, b.id ASC
+  `;
+
+  const result = await poolQuery(sql);
   return result.rows;
 }
-async function getAuthors() {
-  const result = await poolQuery('SELECT * from author');
+
+
+async function getAuthors(orderBy = 'first') {
+  const orderMap = {
+    first: 'first_name',
+    last: 'last_name',
+  };
+  const orderColumn = orderMap[orderBy] || orderMap.first;
+  const result = await poolQuery(`SELECT * from author ORDER BY ${orderColumn}`);
   return result.rows;
 }
-async function getPublishers() {
-  const result = await poolQuery('SELECT * from publisher');
+async function getPublishers(orderBy = 'name') {
+  const orderMap = {
+    name: 'publisher_name',
+  };
+  const orderColumn = orderMap[orderBy] || orderMap.name;
+  const result = await poolQuery(`SELECT * from publisher ORDER BY ${orderColumn}`);
   return result.rows;
 }
 async function updateBook(bookInfo) {
