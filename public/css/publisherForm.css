@@ -1,0 +1,58 @@
+.edit-publisher-form,
+.publisher-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 10px;
+  padding: 25px;
+  box-shadow: var(--box);
+  border-radius: 8px;
+  transform: translate(-50%, 50%);
+}
+
+.edit-publisher-form h2,
+.publisher-form h2 {
+  text-align: center;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-item label {
+  font-weight: 500;
+}
+
+.form-item input,
+.form-item textarea {
+  flex-grow: 1;
+}
+
+.edit-publisher-form .buttons,
+.publisher-form .buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-publisher-form button,
+.publisher-form button {
+  padding: 10px 20px;
+  color: white;
+  font-weight: 550;
+  line-height: 1;
+  border-radius: 5px;
+}
+
+.commit-btn,
+.add-btn,
+.send-edit-btn {
+  background-color: black;
+}
+
+.return-btn,
+.cancel-edit-btn {
+  background-color: grey;
+}

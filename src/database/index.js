@@ -99,4 +99,10 @@ async function updateAuthor(id, first, last) {
 async function deleteAuthor(id) {
   await poolQuery('DELETE FROM author WHERE id = $1', [id]);
 }
-export { bookJoinSql, poolQuery, createBook, deleteBook, validateAccess, getBookById, getBooks, getAuthors, getPublishers, updateBook, deleteAuthor, updateAuthor };
+async function updatePublisher(id, name) {
+  await poolQuery('UPDATE publisher SET publisher_name = $2 WHERE id = $1', [id, name]);
+}
+async function deletePublisher(id) {
+  await poolQuery('DELETE FROM publisher WHERE id = $1', [id]);
+}
+export { bookJoinSql, poolQuery, createBook, deleteBook, validateAccess, getBookById, getBooks, getAuthors, getPublishers, updateBook, deleteAuthor, updateAuthor, updatePublisher, deletePublisher };
