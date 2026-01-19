@@ -14,54 +14,58 @@
 
 <body>
   <%-include ('navbar')%>
-    <header>
-      <h1> Publishers</h1>
-      <div class="publishers-utilities">
-        <div class="publishers-counter">
-          <p>Author count:</p>
-          <p>
-            <%=publishers.length%>
-          </p>
+    <%-include('bg')%>
+      <header>
+        <div class="header-title">
+          <h1> Publishers </h1>
+          <button class='toggle-active' type="button"><img src="icons/add.png" alt="click to add"></button>
         </div>
-        <form method="get">
-          <label for="sortby">Sort by</label>
-          <select name="sortby" id="sortby" onchange="this.form.submit()">
-            <option value="name">Name</option>
-          </select>
-        </form>
-      </div>
-    </header>
-    <div class="publishers-list">
-      <div class="publishers-container">
+        <div class="publishers-utilities">
+          <div class="publishers-counter">
+            <p>Results:</p>
+            <p>
+              <%=publishers.length%>
+            </p>
+          </div>
+          <form method="get">
+            <label for="sortby">Sort by</label>
+            <select name="sortby" id="sortby" onchange="this.form.submit()">
+              <option value="name">Name</option>
+            </select>
+          </form>
+        </div>
+      </header>
+      <div class="publishers-list">
+        <div class="publishers-container">
 
-        <% publishers.forEach((p)=>{ %>
-          <div class="publisher-item-wrapper">
-            <div class="publisher-item">
+          <% publishers.forEach((p)=>{ %>
+            <div class="publisher-item-wrapper">
+              <div class="publisher-item">
 
-              <div class="name">
-                <p>
-                  <%=p.publisher_name %>
-                </p>
-              </div>
-              <div class="publisher-btns">
-                <button class="edit-btn" type="button" data-publisher-id="<%=p.id%>">
-                  <img src="/icons/edit.png" alt="click to edit ">
-                </button>
-                <button class="delete-btn" type="button" data-publisher-id="<%=p.id%>">
-                  <img src="/icons/delete.png" alt="click to delete">
-                </button>
+                <div class="name">
+                  <p>
+                    <%=p.publisher_name %>
+                  </p>
+                </div>
+                <div class="publisher-btns">
+                  <button class="edit-btn" type="button" data-publisher-id="<%=p.id%>">
+                    <img src="/icons/edit-button.png" alt="click to edit ">
+                  </button>
+                  <button class="delete-btn" type="button" data-publisher-id="<%=p.id%>">
+                    <img src="/icons/trash-bin.png" alt="click to delete">
+                  </button>
 
+                </div>
               </div>
             </div>
-          </div>
-          <% }) %>
+            <% }) %>
 
+        </div>
       </div>
-    </div>
-    <%-include('veil')%>
-      <%-include('publisherForm')%>
-        <%-include('passwordPrompt' )%>
-          <script src='/js/publisherUtilities.js'></script>
+      <%-include('veil')%>
+        <%-include('publisherForm')%>
+          <%-include('passwordPrompt' )%>
+            <script src='/js/publisherUtilities.js'></script>
 </body>
 
 </html>

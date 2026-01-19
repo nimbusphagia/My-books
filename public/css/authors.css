@@ -1,11 +1,10 @@
 header {
-  width: 85%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
-  padding: 20px;
-  gap: 20px;
+  padding: 30px 0 10px 0;
 }
 
 .authors-list {
@@ -18,16 +17,34 @@ header {
 .authors-utilities {
   display: flex;
   width: 100%;
-}
-
-.authors-utilities {
   justify-content: space-between;
-
+  align-items: center;
+  font-size: 20px;
+  padding: 10px 0 20px 0;
 }
 
 .authors-counter {
   display: flex;
   gap: 10px;
+}
+
+.authors-counter p,
+.authors-utilities form label {
+  margin: 0;
+  font-weight: 900;
+}
+
+.authors-utilities form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 18px;
+}
+
+.authors-utilities form select {
+  text-align: center;
+  padding: 2px 8px;
 }
 
 .authors-container {
@@ -39,7 +56,7 @@ header {
 }
 
 .author-item-wrapper {
-  padding: 8px;
+  padding: 10px 8px;
 }
 
 .author-item {
@@ -47,10 +64,9 @@ header {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  padding: 6px 15px;
   line-height: 1;
-  border: 2px solid black;
-  border-radius: 2px;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
 }
 
 .author-item .name {
@@ -60,6 +76,7 @@ header {
 
 .name p {
   margin: 0;
+  font-size: 18px;
 }
 
 .author-btns {
@@ -70,6 +87,6 @@ header {
 }
 
 .author-btns img {
-  width: 17px;
+  width: 20px;
   aspect-ratio: 1 / 1;
 }

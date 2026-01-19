@@ -1,13 +1,29 @@
+@font-face {
+  font-family: 'Calive';
+  src: url('/fonts/CalivepixelRegularDemo.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vorline';
+  src: url('/fonts/VorlinepixelRegularDemo.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   /* Variables */
   --font1: Helvetica;
+  --font2: 'Vorline';
+  --font3: 'Calive';
   --gap: 20px;
   --box: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   --box2: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   /* */
   margin: 0;
   padding: 0;
-  font-family: var(--font1);
+  font-family: var(--font3);
   position: relative;
 }
 
@@ -28,16 +44,23 @@ button {
   font-family: inherit;
 }
 
+select,
+option,
+input,
+textarea {
+  color: inherit;
+  font-family: inherit;
+}
+
 button {
   background-color: transparent;
   border: none;
   padding: none;
-  transition: transform 0.1s ease-out;
 }
 
 button:hover {
   cursor: pointer;
-  transform: scale(1.03);
+  transform: scale(1.1);
 }
 
 .modal {
@@ -76,4 +99,39 @@ button:hover {
 
 .inactive {
   display: none;
+}
+
+.header-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+h1 {
+  font-family: var(--font3);
+  font-size: 3em;
+  margin: 0;
+  line-height: 0.9;
+}
+
+.header-title img {
+  width: 27px;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url('/images/pixel-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+
+  opacity: 0.3;
+  z-index: -1;
+  pointer-events: none;
 }

@@ -1,10 +1,13 @@
 <div class="form-delete form-wrapper inactive">
   <form method="POST">
     <input type="hidden" name="action" value="delete">
-    <input type="hidden" name="bookId" id="form-book-id">
+    <input type="hidden" name="bookId" id="form-id">
 
     <div class="form-item">
-      <label for="password">Insert admin password</label>
+      <div class="form-label">
+        <img src="/icons/warning.png" alt="">
+        <label for="password">Insert admin password</label>
+      </div>
       <input type="password" name="password" id="password" required>
     </div>
 

@@ -14,66 +14,70 @@
 
 <body>
   <%-include ('navbar')%>
-    <header class="index-header">
-      <h1> My Library </h1>
-      <div class="index-utilities">
-        <div class="book-counter">
-          <p>Book count:</p>
-          <p>
-            <%=books.length%>
-          </p>
+    <%-include('bg')%>
+      <header class="index-header">
+        <div class="header-title">
+          <h1> Books </h1>
+          <button class='toggle-active' type="button"><img src="icons/add.png" alt="click to add"></button>
         </div>
-        <form method="get">
-          <label for="sortby">Sort by</label>
-          <select name="sortby" id="sortby" onchange="this.form.submit()">
-            <option value="title">Title</option>
-            <option value="author">Author</option>
-            <option value="year">Year</option>
-            <option value="publisher">Publisher</option>
-          </select>
-        </form>
-      </div>
-    </header>
-    <div class="book-list">
-      <div class="books-container">
-        <div class="list-header">
-          <h2>Title</h2>
-          <h2>Author</h2>
-          <h2>Published by</h2>
-          <h2>Year</h2>
-          <h2>ISBN</h2>
-        </div>
-
-        <% books.forEach((b)=>{ %>
-          <div class="book-item">
-            <a href="/book/<%=b.id%>">
-              <%=b.title%>
-            </a>
+        <div class="index-utilities">
+          <div class="book-counter">
+            <p>Results: </p>
             <p>
-              <%=b.author %>
+              <%=books.length%>
             </p>
-            <p>
-              <%=b.publisher %>
-            </p>
-            <p>
-              <%=b.year ?? '' %>
-            </p>
-            <p>
-              <%=b.isbn ?? '' %>
-            </p>
-            <div class="book-utilities">
-              <button class="delete-btn" type="button" data-book-id="<%=b.id%>"><img src="/icons/delete.png"
-                  alt="click to delete"></button>
-            </div>
           </div>
-          <% }) %>
+          <form method="get">
+            <label for="sortby">Sort by</label>
+            <select name="sortby" id="sortby" onchange="this.form.submit()">
+              <option value="title">Title</option>
+              <option value="author_id">Author</option>
+              <option value="year">Year</option>
+              <option value="publisher_id">Publisher</option>
+            </select>
+          </form>
+        </div>
+      </header>
+      <div class="book-list">
+        <div class="books-container">
+          <div class="list-header">
+            <h2>Title</h2>
+            <h2>Author</h2>
+            <h2>Published by</h2>
+            <h2>Year</h2>
+            <h2>ISBN</h2>
+          </div>
 
+          <% books.forEach((b)=>{ %>
+            <div class="book-item">
+              <a href="/book/<%=b.id%>">
+                <%=b.title%>
+              </a>
+              <p>
+                <%=b.author %>
+              </p>
+              <p>
+                <%=b.publisher %>
+              </p>
+              <p>
+                <%=b.year ?? '' %>
+              </p>
+              <p>
+                <%=b.isbn ?? '' %>
+              </p>
+              <div class="book-utilities">
+                <button class="delete-btn" type="button" data-book-id="<%=b.id%>"><img src="/icons/trash-bin.png"
+                    alt="click to delete"></button>
+              </div>
+            </div>
+            <% }) %>
+
+        </div>
       </div>
-    </div>
-    <%-include('veil')%>
-      <%-include('deletePrompt' )%>
-        <%-include('bookForm')%>
-          <script src="/js/indexUtilities.js"></script>
+      <%-include('veil')%>
+        <%-include('deletePrompt' )%>
+          <%-include('bookForm')%>
+            <script src="/js/indexUtilities.js"></script>
 
 </body>
 

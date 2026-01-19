@@ -14,58 +14,63 @@
 
 <body>
   <%-include ('navbar')%>
-    <header>
-      <h1> Authors</h1>
-      <div class="authors-utilities">
-        <div class="authors-counter">
-          <p>Author count:</p>
-          <p>
-            <%=authors.length%>
-          </p>
+    <%-include('bg')%>
+      <header>
+        <div class="header-title">
+          <h1> Authors </h1>
+          <button class='toggle-active' type="button"><img src="icons/add.png" alt="click to add"></button>
         </div>
-        <form method="get">
-          <label for="sortby">Sort by</label>
-          <select name="sortby" id="sortby" onchange="this.form.submit()">
-            <option value="first-name">Name</option>
-            <option value="last-name">Last name</option>
-          </select>
-        </form>
-      </div>
-    </header>
-    <div class="authors-list">
-      <div class="authors-container">
 
-        <% authors.forEach((a)=>{ %>
-          <div class="author-item-wrapper">
-            <div class="author-item">
+        <div class="authors-utilities">
+          <div class="authors-counter">
+            <p>Results:</p>
+            <p>
+              <%=authors.length%>
+            </p>
+          </div>
+          <form method="get">
+            <label for="sortby">Sort by</label>
+            <select name="sortby" id="sortby" onchange="this.form.submit()">
+              <option value="first-name">Name</option>
+              <option value="last-name">Last name</option>
+            </select>
+          </form>
+        </div>
+      </header>
+      <div class="authors-list">
+        <div class="authors-container">
 
-              <div class="name">
-                <p class="first">
-                  <%=a.first_name %>
-                </p>
-                <p class="last">
-                  <%=a.last_name %>
-                </p>
-              </div>
-              <div class="author-btns">
-                <button class="edit-btn" type="button" data-author-id="<%=a.id%>">
-                  <img src="/icons/edit.png" alt="click to edit ">
-                </button>
-                <button class="delete-btn" type="button" data-author-id="<%=a.id%>">
-                  <img src="/icons/delete.png" alt="click to delete">
-                </button>
+          <% authors.forEach((a)=>{ %>
+            <div class="author-item-wrapper">
+              <div class="author-item">
 
+                <div class="name">
+                  <p class="first">
+                    <%=a.first_name %>
+                  </p>
+                  <p class="last">
+                    <%=a.last_name %>
+                  </p>
+                </div>
+                <div class="author-btns">
+                  <button class="edit-btn" type="button" data-author-id="<%=a.id%>">
+                    <img src="/icons/edit-button.png" alt="click to edit ">
+                  </button>
+                  <button class="delete-btn" type="button" data-author-id="<%=a.id%>">
+                    <img src="/icons/trash-bin.png" alt="click to delete">
+                  </button>
+
+                </div>
               </div>
             </div>
-          </div>
-          <% }) %>
+            <% }) %>
 
+        </div>
       </div>
-    </div>
-    <%-include('veil')%>
-      <%-include('authorForm')%>
-        <%-include('passwordPrompt' )%>
-          <script src='/js/authorUtilities.js'></script>
+      <%-include('veil')%>
+        <%-include('authorForm')%>
+          <%-include('passwordPrompt' )%>
+            <script src='/js/authorUtilities.js'></script>
 </body>
 
 </html>
