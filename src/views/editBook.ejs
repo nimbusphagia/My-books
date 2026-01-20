@@ -33,14 +33,18 @@
 
   <div class="form-item">
     <label for="description">Description</label>
-    <textarea id="description" name="description" rows="4">
-      <%=book.description%>
+    <textarea id="description" name="description" rows="6">
+      <%= (book.description ?? "" ).trim() %>
     </textarea>
   </div>
 
   <div class="form-item">
     <label for="isbn">ISBN</label>
     <input type="text" id="isbn" name="isbn" placeholder="978-3-16-148410-0" value='<%=book.isbn%>'>
+  </div>
+  <div class="form-item">
+    <label for="img_url">Image URL</label>
+    <input type="url" id="img_url" name="img_url" value="<%= book.img_url %>">
   </div>
   <div class="buttons">
     <button type="button" class="return-btn">return</button>

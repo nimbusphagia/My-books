@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="/css/passwordPrompt.css">
   <link rel="stylesheet" href="/css/index.css">
-  <title>Library Inventory - Authors</title>
+  <title>My books - Authors</title>
 </head>
 
 <body>
@@ -31,8 +31,8 @@
           <form method="get">
             <label for="sortby">Sort by</label>
             <select name="sortby" id="sortby" onchange="this.form.submit()">
-              <option value="first">Name</option>
-              <option value="last">Last name</option>
+              <option value="first" <%=sortby==='first' ? 'selected' : '' %> >Name</option>
+              <option value="last" <%=sortby==='last' ? 'selected' : '' %>>Last name</option>
             </select>
           </form>
         </div>
@@ -70,7 +70,8 @@
       <%-include('veil')%>
         <%-include('authorForm')%>
           <%-include('passwordPrompt' )%>
-            <script src='/js/authorUtilities.js'></script>
+            <%-include('footer')%>
+              <script src='/js/authorUtilities.js'></script>
 </body>
 
 </html>

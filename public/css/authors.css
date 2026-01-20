@@ -67,11 +67,13 @@ header {
   line-height: 1;
   border-right: 3px solid black;
   border-bottom: 3px solid black;
+  border-radius: 2px;
 }
 
 .author-item .name {
   display: flex;
   gap: 4px;
+  font-weight: 900;
 }
 
 .name p {

@@ -36,7 +36,8 @@ async function bookPost(req, res) {
         year: Number(req.body.year),
         description: req.body.description.trim(),
         isbn: req.body.isbn,
-        id: bookId
+        id: bookId,
+        img_url: req.body.img_url
       }
 
       await updateBook(bookInfo);

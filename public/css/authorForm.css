@@ -3,11 +3,14 @@
   display: flex;
   flex-direction: column;
   width: 300px;
+  min-height: 220px;
   gap: 10px;
   padding: 25px;
-  box-shadow: var(--box);
-  border-radius: 8px;
+  border-radius: 2px;
+  border-right: 4px solid black;
+  border-bottom: 4px solid black;
   transform: translate(-50%, 50%);
+  justify-content: space-evenly;
 }
 
 .edit-author-form h2,

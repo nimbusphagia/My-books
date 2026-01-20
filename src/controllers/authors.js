@@ -3,7 +3,7 @@ import { deleteAuthor, getAuthors, poolQuery, updateAuthor, validateAccess } fro
 async function authorsGet(req, res) {
   const { sortby } = req.query;
   const authors = await getAuthors(sortby ?? 'first');
-  res.render('authors', { authors: authors });
+  res.render('authors', { authors: authors, sortby: sortby });
 }
 async function authorsPost(req, res) {
   const { action } = req.body;

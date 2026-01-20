@@ -3,23 +3,29 @@ import { Pool } from "pg";
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 const bookJoinSql = `
-    SELECT 
-      b.id,
-      b.title,
-      b.author_id,
-      b.publisher_id,
-      a.first_name || ' ' || a.last_name as author,
-      p.publisher_name as publisher,
-      b.year,
-      b.description,
-      b.isbn,
-      b.img_url
-    FROM book b
-JOIN author a 
-    ON b.author_id = a.id 
-    JOIN publisher p 
+  SELECT 
+    b.id,
+    b.title,
+    b.author_id,
+    b.publisher_id,
+    COALESCE(a.first_name || ' ' || a.last_name, 'Unknown Author') AS author,
+    COALESCE(p.publisher_name, 'Unknown Publisher') AS publisher,
+    b.year,
+    COALESCE(b.description, '') AS description,
+    COALESCE(b.isbn, '') AS isbn,
+    COALESCE(
+      b.img_url,
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj1l59hU1fd-knVZjraUO8XAe4DN08yJGj-w&s'
+    ) AS img_url
+  FROM book b
+  LEFT JOIN author a 
+    ON b.author_id = a.id
+  LEFT JOIN publisher p 
     ON p.id = b.publisher_id
-  `;
+`;
+
+
+
 async function poolQuery(sql, params = []) {
   return pool.query(sql, params);
 }
@@ -94,7 +100,7 @@ async function getPublishers(orderBy = 'name') {
   return result.rows;
 }
 async function updateBook(bookInfo) {
-  const { id, title, author_id, publisher_id, year, description, isbn } = bookInfo;
+  const { id, title, author_id, publisher_id, year, description, isbn, img_url } = bookInfo;
 
   const update = `
     UPDATE book
@@ -104,8 +110,9 @@ async function updateBook(bookInfo) {
       publisher_id = $3,
       year = $4,
       description = $5,
-      isbn = $6
-    WHERE id = $7
+      isbn = $6,
+      img_url = $7
+    WHERE id = $8
   `;
 
   await poolQuery(update, [
@@ -115,6 +122,7 @@ async function updateBook(bookInfo) {
     year,
     description,
     isbn,
+    img_url,
     id
   ]);
 }
