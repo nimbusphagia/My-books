@@ -7,23 +7,24 @@
 
 .book-body {
   display: flex;
-  max-width: 80%;
+  max-width: 85%;
   flex: 0 1 auto;
   gap: 20px;
   margin: 50px auto 0 auto;
   padding: 20px;
-  box-shadow: var(--box2);
   gap: 35px;
-  border-radius: 2px;
+  border-bottom: 7px solid black;
+  border-right: 7px solid black;
+  border-radius: 3px;
 }
 
 .img-wrapper {
   /*Width controled by child(img) */
-  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid black;
+  border: 4px solid black;
+  border-radius: 3px;
   padding: 18px;
 }
 
@@ -52,7 +53,8 @@
 
 .book-header h1 {
   text-align: center;
-  border-bottom: 2px solid black;
+  border-bottom: 4px solid black;
+  border-radius: 2px;
 }
 
 .book-header img {
@@ -63,7 +65,7 @@
 .book-description {
   width: 100%;
   height: 100%;
-  line-height: 1.5;
+  line-height: 1.8;
   display: flex;
   align-items: center;
 }
@@ -72,6 +74,7 @@
   box-sizing: border-box;
   height: 100%;
   width: 100%;
+  font-size: calc(14px + 0.3vh);
   font-style: italic;
   text-align: center;
   border: 2px solid black;
